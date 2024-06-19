@@ -1,7 +1,11 @@
-import toolcalls, tooljson, pickle, os, openaikey
+import toolcalls, tooljson, pickle, os
 from openai import OpenAI as openai
 
 client = openai()
+
+
+if(not os.path.exists("sandbox")):
+    os.makedirs("sandbox")
 
 
 if(os.path.exists("chatlog.pkl")):
