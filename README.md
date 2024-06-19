@@ -4,7 +4,7 @@ More complicated and expensive models do better, but cost a lot more, so it's ha
 `bash reset.bash` will reset everything.
 
 needs openai library. also make your key an evironment variable.
-The game will be made in /sandbox.
+The game will be made in sandbox/
 
 
 
