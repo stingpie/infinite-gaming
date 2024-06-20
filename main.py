@@ -24,9 +24,10 @@ limit=25
 
 log.append({"role":"user", "content": feedback })
 
+
 while(stop_reason!="content_filter" and not done and count<limit):
     completion = client.chat.completions.create(
-            model='gpt-3.5-turbo',
+            model='gpt-4o',
             messages=log,
             tools = tooljson.tools,
             tool_choice="required"
@@ -63,10 +64,10 @@ while(stop_reason!="content_filter" and not done and count<limit):
             toolcalls.log_err("function "+func_name+" does not exist.")
 
         log.append({'role':'tool', 'content':result, 'tool_call_id':tool_call_id, 'name':func_name})
-
+        
     count+=1
   
-    print(log)
+    print(response_message)
     
     with open('chatlog.pkl','wb') as f:
         pickle.dump( log, f)
