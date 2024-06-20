@@ -35,7 +35,13 @@ done=False
 count=0
 limit=25
 
-log.append({"role":"user", "content": feedback })
+if(api == 'openai'):
+    log.append({"role":"user", "content": feedback })
+elif(api == 'ant'):
+    if os.path.exists("chatlog.pkl"):
+        log[-1]['content'].append({'type':'text', 'text':feedback})
+    else:
+        log.append({'role':'user','content':feedback})
 
 
 while(stop_reason!="content_filter" and not done and count<limit):
@@ -106,7 +112,6 @@ while(stop_reason!="content_filter" and not done and count<limit):
     if(api == 'ant'):
         log.append({'role':'user', 'content':tool_content})
 
-    print(log)
 
     count+=1
   
